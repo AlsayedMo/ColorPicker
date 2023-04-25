@@ -1,0 +1,122 @@
+*, *::before, *::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 2rem;
+}
+
+body {
+  min-height: 100vh;
+  padding: 4rem;
+  background: linear-gradient(#863A6F, #ffadbc);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Courier New", Courier, monospace;
+}
+
+@keyframes popup {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes popupCard {
+  from {
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.colors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  list-style: none;
+  background: white;
+  padding: 3rem;
+}
+.colors__color {
+  aspect-ratio: 1/1;
+  width: 26rem;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0.3rem solid rgba(128, 128, 128, 0.2);
+  border-radius: 1rem;
+  box-shadow: 0 0rem 0.5rem 0 rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  position: relative;
+  animation-name: popupCard;
+  animation-duration: 0.8s;
+  animation-fill-mode: backwards;
+}
+.colors__color:hover {
+  cursor: pointer;
+  transition: 0.8s;
+  transform: translateY(-0.5rem);
+}
+.colors__color:hover .colors__circle {
+  transform: scale(1.2);
+}
+.colors__color:hover .colors__circle.colors__circle--selected {
+  transform: none;
+}
+.colors__circle {
+  width: 50%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  transition: 0.3s transform;
+  transition-timing-function: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+.colors__circle--selected {
+  transform: scale(3);
+}
+.colors__text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation-name: popup;
+  animation-duration: 0.6s;
+  display: none;
+}
+
+.colors__circle--selected + .colors__text {
+  display: block;
+}
+
+@media screen and (max-width: 62.5rem) {
+  .colors__color {
+    width: 18rem;
+  }
+  .colors:hover .colors__circle {
+    transform: none;
+  }
+}
+@media screen and (max-width: 50rem) {
+  body {
+    padding: 2rem;
+  }
+  .colors__color {
+    width: 15rem;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
